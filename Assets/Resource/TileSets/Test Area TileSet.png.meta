@@ -20,6 +20,14 @@ TextureImporter:
     21300030: Test Area TileSet_48
     21300032: Test Area TileSet_49
     21300034: Test Area TileSet_50
+    21300036: Test Area TileSet_24
+    21300038: Test Area TileSet_41
+    21300040: Test Area TileSet_42
+    21300042: Test Area TileSet_46
+    21300044: Test Area TileSet_51
+    21300046: Test Area TileSet_54
+    21300048: Test Area TileSet_55
+    21300050: Test Area TileSet_56
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -149,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e548fcd737245e4e8cf01bceac615cf
+      spriteID: fd5a4e1272913054b9f75cca1c630578
       vertices: []
       indices: 
       edges: []
@@ -169,7 +177,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b99c28ae8ac5124db02886e7d0470c1
+      spriteID: dcfb33b88d93ad744853ecec8b67db63
       vertices: []
       indices: 
       edges: []
@@ -189,7 +197,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4f3daeb96a6dcb4893fcc4cf633e533
+      spriteID: 94d996e7633f14f4f9aa1a13faa2dd52
       vertices: []
       indices: 
       edges: []
@@ -209,7 +217,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9364240fb1d69e74da2dd1229f4e4486
+      spriteID: aa3a00fe87c16084382b1b57c6ddde5e
       vertices: []
       indices: 
       edges: []
@@ -229,7 +237,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22f01c3f4e07f9e4f8373ded6436859c
+      spriteID: c76866839426beb448c628eed19d779d
       vertices: []
       indices: 
       edges: []
@@ -249,7 +257,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 595519c742838f84586e1a2cd4d13db2
+      spriteID: 8c8b499d2fa460544848f4e682ddaa9f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test Area TileSet_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e726230804c6447b758486875f74c5
       vertices: []
       indices: 
       edges: []
@@ -269,7 +297,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f783a06dc14f0234781c05597d39ea4c
+      spriteID: d3c503fc2ef2b9740ab5c839278133d9
       vertices: []
       indices: 
       edges: []
@@ -289,7 +317,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e71e51ca6d45b3c40b980713569a8b61
+      spriteID: cfe14f1da1149ec47a6227fb2c938e1b
       vertices: []
       indices: 
       edges: []
@@ -309,13 +337,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f0a67d0ce7326d48bcfebb6e7884e73
+      spriteID: b293d3395d9b3874da96031153e3aaf7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test Area TileSet_38
+      name: Test Area TileSet_41
       rect:
         serializedVersion: 2
         x: 192
@@ -329,13 +357,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 822e26e6731636d438044a4747ef9376
+      spriteID: f7b3da1bb2b1404458779ed4794ebea5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test Area TileSet_39
+      name: Test Area TileSet_42
       rect:
         serializedVersion: 2
         x: 256
@@ -349,27 +377,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8938f5097c01133438804b4616b4db83
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Test Area TileSet_40
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8821403694f2a7d48bc2457213651207
+      spriteID: 70d518af759873744b907c47b7ac167d
       vertices: []
       indices: 
       edges: []
@@ -378,8 +386,8 @@ TextureImporter:
       name: Test Area TileSet_43
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
+        x: 320
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -389,27 +397,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43a9865ff5521e44ab49d7eb6ba6ea26
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Test Area TileSet_44
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90eb0c9c6b684834883c30a55e34522d
+      spriteID: c9ebea34028718d44a0d90c974e62560
       vertices: []
       indices: 
       edges: []
@@ -418,6 +406,86 @@ TextureImporter:
       name: Test Area TileSet_45
       rect:
         serializedVersion: 2
+        x: 448
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50fdf9f512f0c1a458fe134c896c9f1b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test Area TileSet_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ecdb355ebfae243aea43e7e55cdecc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test Area TileSet_49
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d6331ee62a9b94ba5a110822f8b7b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test Area TileSet_50
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f169d02d72f6343a91ce89d94a05e2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test Area TileSet_51
+      rect:
+        serializedVersion: 2
         x: 320
         y: 128
         width: 64
@@ -429,13 +497,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bca3da71622a5148b9829d9c1c4de20
+      spriteID: d0d71d4c568f8ed45be2a4d257ad046a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test Area TileSet_48
+      name: Test Area TileSet_54
       rect:
         serializedVersion: 2
         x: 192
@@ -449,13 +517,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ada6613fde42b042a64d29b6d630af5
+      spriteID: 6698c3145e4fa6140b7c75fd9c90bd3a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test Area TileSet_49
+      name: Test Area TileSet_55
       rect:
         serializedVersion: 2
         x: 256
@@ -469,13 +537,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30b6d21f16425424aaf264e0f9d223e7
+      spriteID: 2247d19672df86d47b1a490a511d7bc3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test Area TileSet_50
+      name: Test Area TileSet_56
       rect:
         serializedVersion: 2
         x: 320
@@ -489,7 +557,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abee76aa3f306e3408f35cea9c44eefe
+      spriteID: d9517e30ecb838042b40c979b446f119
       vertices: []
       indices: 
       edges: []
