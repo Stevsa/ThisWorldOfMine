@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace TWoM.Items
 {
+    [System.Serializable]
     public class Consumable_Item : V_P_Item
     {
 

@@ -10,6 +10,7 @@ namespace TWoM.Items
         public int Quantity;
     }
 
+    [System.Serializable]
     public class V_P_Item
     {
         public string name;
@@ -21,5 +22,18 @@ namespace TWoM.Items
         public int Value;
 
         public bool Enchantable;
+
+        public string ItemSave()
+        {
+
+
+            return "";
+        }
+
+        public void LoadItem(string sItem)
+        {
+
+            
+        }
     }
 }
