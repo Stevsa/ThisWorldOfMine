@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TWoM.Items;
 
 namespace TWoM.Characters
 {
@@ -18,6 +19,8 @@ namespace TWoM.Characters
         public LooksHolder charLooks;
         public PersonalityHolder charPersonality;
         public TraitsHolder charTraits;
+
+        public List<ItemSlot> Inventory;
 
         public SpriteHolder charSprites;
 
