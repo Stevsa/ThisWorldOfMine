@@ -12,23 +12,27 @@ public class Test_Item_Saver : MonoBehaviour
     [TextArea]
     public string theText;
 
-	void Start () {
-        TextAsset Text = (TextAsset)Resources.Load("Items/Test_Items", typeof(TextAsset)) as TextAsset;
+	void Start ()
+    {
+        TextAsset[] AllText = Resources.LoadAll<TextAsset>("Items");
 
-        theText = Text.text;
-
-        //theText = TestItem.ItemSave();
-        string[] NewTexts = theText.Split("\n".ToCharArray());
-
-        for (int i = 0; i < NewTexts.Length; i++)
+        for (int J = 0; J < AllText.Length; J++)
         {
-            if (!NewTexts[i].Contains("//") && NewTexts[i].Contains("<"))
+            TextAsset Text = AllText[J];
+            theText = Text.text;
+            //theText = TestItem.ItemSave();
+            string[] NewTexts = theText.Split("\n".ToCharArray());
+
+            for (int i = 0; i < NewTexts.Length; i++)
             {
-                Debug.Log(NewTexts[i].Length);
-                TestItems.Add(CreateItemFromString(NewTexts[i]));
+                if (!NewTexts[i].Contains("//") && NewTexts[i].Contains("<"))
+                {
+                    Debug.Log(NewTexts[i].Length);
+                    TestItems.Add(CreateItemFromString(NewTexts[i]));
+                }
             }
         }
-        
+
 
     }
 
