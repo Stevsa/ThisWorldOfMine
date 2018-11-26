@@ -5,10 +5,22 @@ using UnityEditor;
 
 namespace TWoM.Items
 {
+    public interface IUseable<in t>
+    {
+        void Use(t User);
+    }
+
+    [System.Serializable]
     public class ItemSlot
     {
         public V_P_Item VItem;
         public int Quantity;
+
+        public ItemSlot(V_P_Item item,int quantity)
+        {
+            VItem = item;
+            Quantity = quantity;
+        }
     }
 
     [System.Serializable]

@@ -21,6 +21,7 @@ namespace TWoM.Characters
         public TraitsHolder charTraits;
 
         public List<ItemSlot> Inventory;
+        public int maxInventorySpaces;
 
         public SpriteHolder charSprites;
 
@@ -28,6 +29,8 @@ namespace TWoM.Characters
         public Sprite UniquePortrait;
 
         public float speed;
+
+        public List<GameObject> ObjectsInReach;
 
         void Start()
         {
@@ -61,6 +64,8 @@ namespace TWoM.Characters
                     GetComponent<SpriteRenderer>().sprite = charSprites.DownSprite;
                 }
             }
+
+
         }
 
         public void CreateFromVirtual(V_Character charVirtural)
@@ -79,6 +84,44 @@ namespace TWoM.Characters
 
             UniqueSprite = charVirtural.UniqueSprite;
             UniquePortrait = charVirtural.UniquePortrait;
+        }
+
+        public ItemSlot[] PickupFromInventroy(ItemSlot[] Inventory)
+        {
+            Debug.Log("Picking Up Inventroy");
+            List<ItemSlot> newInventory = new List<ItemSlot>();
+            for (int i = 0; i < Inventory.Length; i++)
+            {
+                if (Inventory[i] != null)
+                    if (Inventory[i].VItem != null)
+                        if (!AddItemtoInventory(Inventory[i]))
+                        {
+                            newInventory.Add(Inventory[i]);
+                        }
+            }
+
+            return newInventory.ToArray();
+        }
+
+        public bool AddItemtoInventory(ItemSlot ItemSlot)
+        {
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                if (Inventory[i].VItem != null)
+                    if (Inventory[i].VItem.name == ItemSlot.VItem.name)
+                        if (Inventory[i].VItem.Stackable)
+                        {
+                            Inventory[i].Quantity += ItemSlot.Quantity;
+                            return true;
+                        }
+            }
+
+            if (Inventory.Count < maxInventorySpaces)
+            {
+                Inventory.Add(new ItemSlot(ItemSlot.VItem, ItemSlot.Quantity));
+                return true;
+            }
+            return false;
         }
     }
 }

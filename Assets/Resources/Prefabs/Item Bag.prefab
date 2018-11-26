@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4602913202184508}
   - component: {fileID: 212646551153068004}
   - component: {fileID: 58876092822326414}
+  - component: {fileID: 114403714546130658}
   m_Layer: 0
   m_Name: Item Bag
   m_TagString: Untagged
@@ -56,6 +57,34 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &114403714546130658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153461914235962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74a71fc053f13c42b8f8e08d7571468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Holding:
+  - VItem:
+      name: Test Item
+      Stackable: 0
+      Portrait: {fileID: 0}
+      SmallSprite: {fileID: 0}
+      Value: 10
+      Enchantable: 1
+    Quantity: 1
+  - VItem:
+      name: Test Item
+      Stackable: 0
+      Portrait: {fileID: 0}
+      SmallSprite: {fileID: 0}
+      Value: 13
+      Enchantable: 1
+    Quantity: 1
 --- !u!212 &212646551153068004
 SpriteRenderer:
   m_ObjectHideFlags: 1

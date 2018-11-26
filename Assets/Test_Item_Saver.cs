@@ -27,7 +27,6 @@ public class Test_Item_Saver : MonoBehaviour
             {
                 if (!NewTexts[i].Contains("//") && NewTexts[i].Contains("<"))
                 {
-                    Debug.Log(NewTexts[i].Length);
                     TestItems.Add(CreateItemFromString(NewTexts[i]));
                 }
             }

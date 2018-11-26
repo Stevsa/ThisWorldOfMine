@@ -404,6 +404,11 @@ Prefab:
       propertyPath: orthographic size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114923799620966312, guid: f57dc66a01c0a634eaa3e7e14658ef2b,
+        type: 2}
+      propertyPath: maxInventorySpaces
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f57dc66a01c0a634eaa3e7e14658ef2b, type: 2}
   m_IsPrefabAsset: 0
@@ -707,6 +712,7 @@ GameObject:
   - component: {fileID: 567200582}
   - component: {fileID: 567200584}
   - component: {fileID: 567200583}
+  - component: {fileID: 567200585}
   m_Layer: 5
   m_Name: Interation Area
   m_TagString: Untagged
@@ -767,6 +773,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 567200581}
   m_CullTransparentMesh: 0
+--- !u!114 &567200585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567200581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5f4921386b03c4fbba46ad17befac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TopInteration: {fileID: 0}
 --- !u!1 &617569881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1091,26 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+--- !u!1 &888266740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1463992524829890, guid: f57dc66a01c0a634eaa3e7e14658ef2b,
+    type: 2}
+  m_PrefabInternal: {fileID: 208858068}
+--- !u!58 &888266746
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 888266740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &985406264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1482,6 @@ GameObject:
   - component: {fileID: 1224323802}
   - component: {fileID: 1224323804}
   - component: {fileID: 1224323803}
-  - component: {fileID: 1224323805}
   m_Layer: 0
   m_Name: Floors
   m_TagString: Untagged
@@ -56881,17 +56918,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1224323805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1224323801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25086bf6b6f942447829e9fe72dfc328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1277617110
 GameObject:
   m_ObjectHideFlags: 0
