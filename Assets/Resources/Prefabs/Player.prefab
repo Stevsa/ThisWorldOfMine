@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212494145348063732}
   - component: {fileID: 50487883252494554}
   - component: {fileID: 61635193611819950}
+  - component: {fileID: 58526004689060094}
   - component: {fileID: 114923799620966312}
   m_Layer: 0
   m_Name: Player
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463992524829890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.34, y: -1.06, z: -0.9119099}
+  m_LocalPosition: {x: 0.08, y: -1.03, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4710553289895242}
@@ -69,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602087052868408}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4331374287805052}
@@ -99,7 +100,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -135,6 +136,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58526004689060094
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463992524829890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!61 &61635193611819950
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -195,6 +211,8 @@ MonoBehaviour:
   LastName: 
   apparentAge: 0
   Cash: 0
+  Inventory: []
+  maxInventorySpaces: 10
   charSprites:
     UpSprite: {fileID: 21300002, guid: bf9117d8646df154298b553b2875ba0a, type: 3}
     LeftSprite: {fileID: 21300004, guid: bf9117d8646df154298b553b2875ba0a, type: 3}
@@ -203,6 +221,7 @@ MonoBehaviour:
   UniqueSprite: {fileID: 0}
   UniquePortrait: {fileID: 0}
   speed: 30
+  ObjectsInReach: []
 --- !u!212 &212494145348063732
 SpriteRenderer:
   m_ObjectHideFlags: 1

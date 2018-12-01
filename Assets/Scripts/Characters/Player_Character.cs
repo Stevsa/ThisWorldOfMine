@@ -11,28 +11,30 @@ namespace TWoM.Characters
     public class Player_Character : P_Character
     {
 
-        void Start()
+        protected override void Start()
         {
 
         }
 
-        void Update()
+        protected override void Update()
         {
             if (ObjectsInReach.Count > 0)
             {
                 FindObjectOfType<UI_InteractionArea>().TopInteration = ObjectsInReach[0];
                 if (Input.GetAxis("Use") > 0)
                 {
-                    InteravtWith(ObjectsInReach[0]);
+                    InteractWith(ObjectsInReach[0]);
                 }
             }
             else
             {
                 FindObjectOfType<UI_InteractionArea>().TopInteration = null;
             }
+
+            base.Update();
         }
 
-        void FixedUpdate()
+        protected override void FixedUpdate()
         {
             float moveH = Input.GetAxis("Horizontal");
             float moveV = Input.GetAxis("Vertical");
@@ -48,7 +50,7 @@ namespace TWoM.Characters
             }
         }
 
-        public void InteravtWith(GameObject @object)
+        public void InteractWith(GameObject @object)
         {
             Debug.Log("Interact Start");
             if (@object != null)

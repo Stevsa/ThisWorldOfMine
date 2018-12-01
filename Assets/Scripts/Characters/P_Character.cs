@@ -32,17 +32,19 @@ namespace TWoM.Characters
 
         public List<GameObject> ObjectsInReach;
 
-        void Start()
+        protected virtual void Start()
         {
 
         }
-        
-        void Update()
+
+        protected virtual void Update()
         {
             Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+            Debug.Log(rigidbody);
 
             if (rigidbody!=null)
             {
+                Debug.Log(rigidbody.velocity);
                 if (rigidbody.velocity == Vector2.zero)
                 {
                     
@@ -68,7 +70,12 @@ namespace TWoM.Characters
 
         }
 
-        public void CreateFromVirtual(V_Character charVirtural)
+        protected virtual void FixedUpdate()
+        {
+
+        }
+
+        public virtual void CreateFromVirtual(V_Character charVirtural)
         {
             FirstName = charVirtural.FirstName;
             MiddleNames = charVirtural.MiddleNames;
@@ -86,7 +93,7 @@ namespace TWoM.Characters
             UniquePortrait = charVirtural.UniquePortrait;
         }
 
-        public ItemSlot[] PickupFromInventroy(ItemSlot[] Inventory)
+        public virtual ItemSlot[] PickupFromInventroy(ItemSlot[] Inventory)
         {
             Debug.Log("Picking Up Inventroy");
             List<ItemSlot> newInventory = new List<ItemSlot>();
@@ -103,7 +110,7 @@ namespace TWoM.Characters
             return newInventory.ToArray();
         }
 
-        public bool AddItemtoInventory(ItemSlot ItemSlot)
+        public virtual bool AddItemtoInventory(ItemSlot ItemSlot)
         {
             for (int i = 0; i < Inventory.Count; i++)
             {
