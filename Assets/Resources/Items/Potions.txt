@@ -1,5 +1,5 @@
 //Clothing_Item,Consumable_Item,V_Book,Weapon_Item,Quest_Item,Unique_Item
-<Consumable_Item><Name ='Mana Potion'><Stackable ='TRUE'><Portrait ='NULL', Small Sprite ='NULL'><Value ='100'><Enchantable ='TRUE'>
+<Consumable_Item><Name ='Mana Potion'><Stackable ='TRUE'><Portrait ='Sprites/Potion', Small Sprite ='Sprites/Potion'><Value ='100'><Enchantable ='TRUE'>
 <Consumable_Item><Name ='Potion of Death'><Stackable ='TRUE'><Portrait ='Null', Small Sprite ='Null'><Value ='5000'><Enchantable ='TRUE'>
 <Consumable_Item><Name ='Love Potion'><Stackable ='TRUE'><Portrait ='Null', Small Sprite ='Null'><Value ='2000'><Enchantable ='TRUE'>
 <Consumable_Item><Name ='Pollyjuice Potion'><Stackable ='TRUE'><Portrait ='Null', Small Sprite ='Null'><Value ='3000'><Enchantable ='TRUE'>
