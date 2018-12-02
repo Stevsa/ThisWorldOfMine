@@ -13,6 +13,15 @@ namespace TWoM.UI.Inventroys
     {
         public GameObject Slot;
         public GameObject Item;
+        public V_P_Item v_Item;
+        public int v_Quantity;
+    }
+    [System.Serializable]
+    public class EquipmentSlots
+    {
+        public GameObject Slot;
+        public GameObject Item;
+        public V_P_Item v_Item;
     }
 
     public class UI_P_Inventory : MonoBehaviour
@@ -21,30 +30,47 @@ namespace TWoM.UI.Inventroys
 
         //UI Inventory Stuffs
         public List<InventorySlot> Slots;
+        public List<EquipmentSlots> E_Slots;
         public GameObject ExampleItem;
 
         public List<GameObject> ItemPool;
 
+        public GameObject EquipmentArea;
+        public GameObject InventoryArea;
+
         void Awake()
         {
             Slots = new List<InventorySlot>();
-            for (int i = 0; i < GetComponentInChildren<GridLayoutGroup>().transform.childCount; i++)
+            for (int i = 0; i < InventoryArea.GetComponentInChildren<GridLayoutGroup>().transform.childCount; i++)
             {
                 InventorySlot slot = new InventorySlot();
-                slot.Slot = GetComponentInChildren<GridLayoutGroup>().transform.GetChild(i).gameObject;
+                slot.Slot = InventoryArea.GetComponentInChildren<GridLayoutGroup>().transform.GetChild(i).gameObject;
                 Slots.Add(slot);
             }
+
+            E_Slots = new List<EquipmentSlots>();
+            for (int i = 0; i < EquipmentArea.GetComponentInChildren<GridLayoutGroup>().transform.childCount; i++)
+            {
+                EquipmentSlots slot = new EquipmentSlots();
+                slot.Slot = EquipmentArea.GetComponentInChildren<GridLayoutGroup>().transform.GetChild(i).gameObject;
+                E_Slots.Add(slot);
+            }
+
             ExampleItem.SetActive(false);
         }
 
         public void UpdateFrom(P_Character _Character)
         {
-                UpdateFromInventory(_Character.Inventory);
+            UpdateFromInventory(_Character.Inventory);
+
+            transform.Find("Selection Option/Equipment").gameObject.SetActive(true);
         }
 
         public void UpdateFrom(P_Container _Container)
         {
             UpdateFromInventory(_Container.Inventory);
+
+            transform.Find("Selection Option/Equipment").gameObject.SetActive(false);
         }
 
         public void UpdateEmpty()
@@ -55,15 +81,10 @@ namespace TWoM.UI.Inventroys
 
         void UpdateFromInventory(List<ItemSlot> items)
         {
-            if (items == null)
-            {
-                items = new List<ItemSlot>();
-            }
-            if (items != Inventory)
-            {
-                Inventory = items;
-                RebuildInventroy();
-            }
+            if (items == null) items = new List<ItemSlot>();
+
+            Inventory = items;
+            RebuildInventroy();
         }
 
         public void RebuildInventroy()
@@ -77,6 +98,9 @@ namespace TWoM.UI.Inventroys
 
                 if (Inventory.Count > i)
                 {
+                    Slots[i].v_Item = Inventory[i].VItem;
+                    Slots[i].v_Quantity = Inventory[i].Quantity;
+
                     GameObject ItemGO;
                     if (ItemPool.Count > 0)
                     {
@@ -92,6 +116,9 @@ namespace TWoM.UI.Inventroys
 
                     for (int j = 0; j < ItemGO.transform.childCount; j++)
                     {
+                        ItemGO.transform.GetChild(j).GetComponent<Image>().sprite = null;
+                        ItemGO.transform.GetChild(j).GetComponent<Image>().color = Color.white;
+
                         ItemGO.transform.GetChild(j).gameObject.SetActive(true);
                         ItemGO.transform.GetChild(j).GetComponent<Image>().preserveAspect = true;
                         if (Inventory[i].VItem.Sprites.Count > j)
@@ -113,6 +140,29 @@ namespace TWoM.UI.Inventroys
             }
         }
 
+        public void SelectItem(GameObject fromSlot)
+        {
+            Debug.Log("Select Item");
+            for (int i = 0; i < Slots.Count; i++)
+            {
+                if (Slots[i].Slot == fromSlot)
+                {
+                    Debug.Log("Found Slot");
+                    GetComponentInParent<UI_Controller_Inventory>().SelectSlot(i, GetComponent<UI_P_Inventory>());
+                }
+            }
+        }
 
+        public void ChangeToEquipment()
+        {
+            EquipmentArea.SetActive(true);
+            InventoryArea.SetActive(false);
+        }
+
+        public void ChangeToInventory()
+        {
+            EquipmentArea.SetActive(false);
+            InventoryArea.SetActive(true);
+        }
     }
 }

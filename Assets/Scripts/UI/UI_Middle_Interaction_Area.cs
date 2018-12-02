@@ -32,6 +32,7 @@ namespace TWoM.UI
 
         public void OpenMenu(Middle_Menues menu)
         {
+
             switch (menu)
             {
                 case Middle_Menues.NONE:
@@ -65,6 +66,8 @@ namespace TWoM.UI
 
         public void Close()
         {
+            FindObjectOfType<UI_Controller>().InMenu = false;
+
             OpenFor = null;
             for (int i = 0; i < transform.childCount; i++)
             {

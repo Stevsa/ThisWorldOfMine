@@ -68,23 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74a71fc053f13c42b8f8e08d7571468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Holding:
-  - VItem:
-      name: Test Item
-      Stackable: 0
-      Portrait: {fileID: 0}
-      SmallSprite: {fileID: 0}
-      Value: 10
-      Enchantable: 1
-    Quantity: 1
-  - VItem:
-      name: Test Item
-      Stackable: 0
-      Portrait: {fileID: 0}
-      SmallSprite: {fileID: 0}
-      Value: 13
-      Enchantable: 1
-    Quantity: 1
+  Inventory: []
 --- !u!212 &212646551153068004
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -120,14 +104,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff57bc391a52fb747a27c4e5d31fc7ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c957f0d5710cebf45bb61d94a8830f8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4999997, y: 0.36112025}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

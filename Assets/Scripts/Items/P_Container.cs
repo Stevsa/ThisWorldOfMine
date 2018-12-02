@@ -42,11 +42,9 @@ namespace TWoM.Inworld
 
         public void Use(GameObject User)
         {
-            Debug.Log("Bag Being Used");
             if (User != null)
                 if (User.GetComponent<P_Character>() != null)
                 {
-                    Debug.Log("User is Charicter");
                     FindObjectOfType<UI_Middle_Interaction_Area>().OpenMenu(Middle_Menues.INVENTORY);
                     FindObjectOfType<UI_Controller_Inventory>().OpenInventoryFrom(User.GetComponent<P_Character>(), GetComponent<P_Container>());
                 }

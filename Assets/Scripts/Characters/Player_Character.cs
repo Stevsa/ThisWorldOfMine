@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TWoM.UI;
+using TWoM.UI.Inventroys;
 using TWoM.Inworld;
 using TWoM.Items;
 
@@ -31,6 +32,13 @@ namespace TWoM.Characters
                 FindObjectOfType<UI_InteractionArea>().TopInteration = null;
             }
 
+            if (Input.GetKeyDown(KeyCode.I))
+                if (!FindObjectOfType<UI_Controller>().InMenu)
+                {
+                    FindObjectOfType<UI_Middle_Interaction_Area>().OpenMenu(Middle_Menues.INVENTORY);
+                    FindObjectOfType<UI_Controller_Inventory>().OpenInventoryFrom(GetComponent<P_Character>());
+                }
+
             base.Update();
         }
 
@@ -45,14 +53,11 @@ namespace TWoM.Characters
 
         public void InteractWith(GameObject @object)
         {
-            Debug.Log("Interact Start");
             if (!FindObjectOfType<UI.UI_Controller>().InMenu)
                 if (@object != null)
                 {
-                    Debug.Log("Somthing There");
                     if (@object.GetComponent(typeof(IUseable<GameObject>)) != null)
                     {
-                        Debug.Log("Interactable");
                         IUseable<GameObject> Using = @object.GetComponent(typeof(IUseable<GameObject>)) as IUseable<GameObject>;
                         Using.Use(gameObject);
                     }
