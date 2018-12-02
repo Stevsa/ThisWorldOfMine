@@ -40,11 +40,9 @@ namespace TWoM.Characters
         protected virtual void Update()
         {
             Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-            Debug.Log(rigidbody);
 
             if (rigidbody!=null)
             {
-                Debug.Log(rigidbody.velocity);
                 if (rigidbody.velocity == Vector2.zero)
                 {
                     

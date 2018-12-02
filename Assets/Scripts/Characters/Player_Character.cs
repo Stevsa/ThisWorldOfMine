@@ -39,30 +39,24 @@ namespace TWoM.Characters
             float moveH = Input.GetAxis("Horizontal");
             float moveV = Input.GetAxis("Vertical");
 
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(moveH, moveV) * speed);
-            if (moveH == 0)
-            {
-                //GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-            }
-            if (moveV == 0)
-            {
-                //GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,0);
-            }
+            if (!FindObjectOfType<UI.UI_Controller>().InMenu)
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(moveH, moveV) * speed);
         }
 
         public void InteractWith(GameObject @object)
         {
             Debug.Log("Interact Start");
-            if (@object != null)
-            {
-                Debug.Log("Somthing There");
-                if (@object.GetComponent(typeof(IUseable<GameObject>)) != null)
+            if (!FindObjectOfType<UI.UI_Controller>().InMenu)
+                if (@object != null)
                 {
-                    Debug.Log("Interactable");
-                    IUseable<GameObject> Using = @object.GetComponent(typeof(IUseable<GameObject>)) as IUseable<GameObject>;
-                    Using.Use(gameObject);
+                    Debug.Log("Somthing There");
+                    if (@object.GetComponent(typeof(IUseable<GameObject>)) != null)
+                    {
+                        Debug.Log("Interactable");
+                        IUseable<GameObject> Using = @object.GetComponent(typeof(IUseable<GameObject>)) as IUseable<GameObject>;
+                        Using.Use(gameObject);
+                    }
                 }
-            }
         }
     }
 }

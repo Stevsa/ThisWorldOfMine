@@ -29,8 +29,8 @@ namespace TWoM.Items
         public string name;
         public bool Stackable;
 
-        public Sprite Portrait;
-        public Sprite SmallSprite;
+        public List<Sprite> Sprites;
+        public List<Color> Colours;
 
         public int Value;
 
@@ -46,6 +46,7 @@ namespace TWoM.Items
             }
             SaveString += "<Name ='" + name + "'>";
             SaveString += "<Stackable ='" + Stackable.ToString() + "'>";
+            /*
             if (Portrait != null)
             {
                 SaveString += "<Portrait ='" + AssetDatabase.GetAssetPath(Portrait).ToString() + "', ";
@@ -62,6 +63,7 @@ namespace TWoM.Items
             {
                 SaveString += "Small Sprite ='NULL'>";
             }
+            */
             SaveString += "<Value ='" + Value + "'>";
             SaveString += "<Enchantable =" + Enchantable.ToString() + ">";
 
@@ -76,6 +78,7 @@ namespace TWoM.Items
             SearchString = "Stackable ='";
             Stackable = "TRUE" == sItem.Substring(sItem.IndexOf(SearchString) + SearchString.Length, sItem.IndexOf("'", sItem.IndexOf(SearchString) + SearchString.Length) - (sItem.IndexOf(SearchString) + SearchString.Length));
 
+            /*
             SearchString = "Portrait ='";
             string tPortrait = sItem.Substring(sItem.IndexOf(SearchString) + SearchString.Length, sItem.IndexOf("'", sItem.IndexOf(SearchString) + SearchString.Length) - (sItem.IndexOf(SearchString) + SearchString.Length));
             Portrait = Resources.Load<Sprite>(tPortrait);
@@ -83,6 +86,7 @@ namespace TWoM.Items
             SearchString = "Small Sprite ='";
             string tSmallSprite = sItem.Substring(sItem.IndexOf(SearchString) + SearchString.Length, sItem.IndexOf("'", sItem.IndexOf(SearchString) + SearchString.Length) - (sItem.IndexOf(SearchString) + SearchString.Length));
             SmallSprite = Resources.Load<Sprite>(tSmallSprite);
+            */
             
             SearchString = "Value ='";
             Value = int.Parse(sItem.Substring(sItem.IndexOf(SearchString) + SearchString.Length, sItem.IndexOf("'", sItem.IndexOf(SearchString) + SearchString.Length) - (sItem.IndexOf(SearchString) + SearchString.Length)));
