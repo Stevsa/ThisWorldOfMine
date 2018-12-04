@@ -1,0 +1,2 @@
+//Clothing_Item,Consumable_Item,V_Book,Weapon_Item,Quest_Item,Unique_Item
+<Consumable_Item><Name ='Mana Potion'><Stackable ='TRUE'><Sprite ='Sprites/Potion,Potion_0|Sprites/Potion,Potion_1', Colour ='0052A8|ffffff'><Value ='100'><Enchantable ='TRUE'><Info =''><Extra =''>

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace TWoM.Items
 {
+    [System.Serializable]
     public class Quest_Item : Unique_Item
     {
         

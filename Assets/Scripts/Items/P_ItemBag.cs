@@ -6,23 +6,8 @@ using TWoM.Characters;
 
 namespace TWoM.Inworld
 {
-    public class P_ItemBag : MonoBehaviour
+    public class P_ItemBag : P_Container
     {
-        public List<ItemSlot> Holding;
-        
-        void Start()
-        {
 
-        }
-        
-        void Update()
-        {
-
-        }
-
-        public void Pickup(P_Character tChar)
-        {
-
-        }
     }
 }

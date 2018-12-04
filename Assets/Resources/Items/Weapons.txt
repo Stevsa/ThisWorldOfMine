@@ -1,0 +1,2 @@
+//Clothing_Item,Consumable_Item,V_Book,Weapon_Item,Quest_Item,Unique_Item
+<Weapon_Item><Name ='Pistol'><Stackable ='FALSE'><Sprite ='NULL', Colour ='ffffff'><Value ='50'><Enchantable ='TRUE'><Info =''><Extra =''>
