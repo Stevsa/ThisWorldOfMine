@@ -57,5 +57,23 @@ namespace TWoM.Inworld
                 Destroy(gameObject);
             }
         }
+
+        
+        public virtual bool AddItemtoInventory(ItemSlot ItemSlot)
+        {
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                if (Inventory[i].VItem != null)
+                    if (Inventory[i].VItem.name == ItemSlot.VItem.name)
+                        if (Inventory[i].VItem.Stackable)
+                        {
+                            Inventory[i].Quantity += ItemSlot.Quantity;
+                            return true;
+                        }
+            }
+
+            Inventory.Add(new ItemSlot(ItemSlot.VItem, ItemSlot.Quantity));
+            return true;
+        }
     }
 }

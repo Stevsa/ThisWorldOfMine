@@ -41,44 +41,8 @@ public class Test_Item_Saver : MonoBehaviour
         string tClass = str.Substring(str.IndexOf(SearchString) + SearchString.Length, str.IndexOf(">", str.IndexOf(SearchString) + SearchString.Length) - (str.IndexOf(SearchString) + SearchString.Length));
         
         V_P_Item NewItem = null;
-
-        switch (tClass)
-        {
-            case "V_P_Item":
-                NewItem = new V_P_Item();
-                NewItem.LoadItem(str);
-                break;
-            case "V_Item":
-                NewItem = new V_Item();
-                NewItem.LoadItem(str);
-                break;
-            case "V_Book":
-                NewItem = new V_Book();
-                NewItem.LoadItem(str);
-                break;
-            case "Clothing_Item":
-                NewItem = new Clothing_Item();
-                NewItem.LoadItem(str);
-                break;
-            case "Consumable_Item":
-                NewItem = new Consumable_Item();
-                NewItem.LoadItem(str);
-                break;
-            case "Quest_Item":
-                NewItem = new Quest_Item();
-                NewItem.LoadItem(str);
-                break;
-            case "Unique_Item":
-                NewItem = new Unique_Item();
-                NewItem.LoadItem(str);
-                break;
-            case "Weapon_Item":
-                NewItem = new Weapon_Item();
-                NewItem.LoadItem(str);
-                break;
-            default:
-                break;
-        }
+        NewItem = Activator.CreateInstance(Type.GetType("TWoM.Items." + tClass)) as V_P_Item;
+        NewItem.LoadItem(str);
 
         return NewItem;
     }

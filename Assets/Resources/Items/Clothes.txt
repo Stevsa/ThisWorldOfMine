@@ -1,6 +1,2 @@
 //Clothing_Item,Consumable_Item,V_Book,Weapon_Item,Quest_Item,Unique_Item
-<Clothing_Item><Name ='T-Shirt'><Stackable ='FALSE'><Portrait ='NULL', Small Sprite ='NULL'><Value ='8'><Enchantable ='TRUE'>
-<Clothing_Item><Name ='Pants'><Stackable ='FALSE'><Portrait ='NULL', Small Sprite ='NULL'><Value ='10'><Enchantable ='TRUE'>
-<Clothing_Item><Name ='Boots'><Stackable ='FALSE'><Portrait ='NULL', Small Sprite ='NULL'><Value ='12'><Enchantable ='TRUE'>
-<Clothing_Item><Name ='Socks'><Stackable ='FALSE'><Portrait ='NULL', Small Sprite ='NULL'><Value ='2'><Enchantable ='TRUE'>
-<Clothing_Item><Name ='Baseball Hat'><Stackable ='FALSE'><Portrait ='NULL', Small Sprite ='NULL'><Value ='8'><Enchantable ='TRUE'>
+<Clothing_Item><Name ='T-Shirt'><Type ='BODY'><Stackable ='FALSE'><Sprite ='NULL', Colour ='ffffff'><Value ='8'><Enchantable ='TRUE'><Info =''><Extra =''>
