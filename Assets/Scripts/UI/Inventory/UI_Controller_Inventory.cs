@@ -119,25 +119,109 @@ namespace TWoM.UI.Inventroys
             BackInteractionArea();
         }
 
+        //Take
         public void TakeAll()
         {
             if (Secondary_Charicter != null)
             {
-                Main_Charicter.Inventory.AddRange(Secondary_Charicter.Inventory);
+                for (int i = 0; i < Secondary_Charicter.Inventory.Count; i++)
+                {
+                    ItemSlot newItem = Secondary_Charicter.Inventory[i];
+
+                    Main_Charicter.AddItemtoInventory(newItem);
+                }
                 Secondary_Charicter.Inventory = new List<ItemSlot>();
             }
             if (Secondary_Container != null)
             {
-                Main_Charicter.Inventory.AddRange(Secondary_Container.Inventory);
+                for (int i = 0; i < Secondary_Container.Inventory.Count; i++)
+                {
+                    ItemSlot newItem = Secondary_Container.Inventory[i];
+
+                    Main_Charicter.AddItemtoInventory(newItem);
+                }
                 Secondary_Container.Inventory = new List<ItemSlot>();
             }
 
             InventoryUsed();
         }
+        public void TakeSingle(int amount)
+        {
+            if (Secondary_Charicter != null)
+            {
+                if (Secondary_Charicter.Inventory[SelectedSlot].Quantity < amount) amount = Secondary_Charicter.Inventory[SelectedSlot].Quantity;
+
+                ItemSlot newItem = new ItemSlot(Secondary_Charicter.Inventory[SelectedSlot].VItem,amount);
+                if (Main_Charicter.AddItemtoInventory(newItem))
+                {
+
+                    Secondary_Charicter.Inventory[SelectedSlot].Quantity -= amount;
+                    if (Secondary_Charicter.Inventory[SelectedSlot].Quantity <= 0)
+                    {
+                        Secondary_Charicter.Inventory.RemoveAt(SelectedSlot);
+                    }
+                }
+            }
+            if (Secondary_Container != null)
+            {
+                if (Secondary_Container.Inventory[SelectedSlot].Quantity < amount) amount = Secondary_Container.Inventory[SelectedSlot].Quantity;
+
+                ItemSlot newItem = new ItemSlot(Secondary_Container.Inventory[SelectedSlot].VItem, amount);
+                if (Main_Charicter.AddItemtoInventory(newItem))
+                {
+
+                    Secondary_Container.Inventory[SelectedSlot].Quantity -= amount;
+                    if (Secondary_Container.Inventory[SelectedSlot].Quantity <= 0)
+                    {
+                        Secondary_Container.Inventory.RemoveAt(SelectedSlot);
+                    }
+                }
+            }
+
+            BackInteractionArea();
+            InventoryUsed();
+        }
+        public void TakeSingle()
+        {
+            if (Secondary_Charicter != null)
+            {
+                ItemSlot newItem = new ItemSlot(Secondary_Charicter.Inventory[SelectedSlot].VItem, Secondary_Charicter.Inventory[SelectedSlot].Quantity);
+                if (Main_Charicter.AddItemtoInventory(newItem))
+                {
+                    Secondary_Charicter.Inventory.RemoveAt(SelectedSlot);
+                }
+            }
+            if (Secondary_Container != null)
+            {
+                ItemSlot newItem = new ItemSlot(Secondary_Container.Inventory[SelectedSlot].VItem, Secondary_Container.Inventory[SelectedSlot].Quantity);
+                if (Main_Charicter.AddItemtoInventory(newItem))
+                {
+                    Secondary_Container.Inventory.RemoveAt(SelectedSlot);
+                }
+            }
+
+            BackInteractionArea();
+            InventoryUsed();
+        }
+
+        //Give
         public void GiveAll()
         {
-            if (Secondary_Charicter != null) Secondary_Charicter.Inventory.AddRange(Main_Charicter.Inventory);
-            if (Secondary_Container != null) Secondary_Container.Inventory.AddRange(Main_Charicter.Inventory);
+
+            if (Secondary_Charicter != null)
+            {
+                for (int i = 0; i < Main_Charicter.Inventory.Count; i++)
+                {
+                    Secondary_Charicter.AddItemtoInventory(Main_Charicter.Inventory[i]);
+                }
+            }
+            if (Secondary_Container != null)
+            {
+                for (int i = 0; i < Main_Charicter.Inventory.Count; i++)
+                {
+                    Secondary_Container.AddItemtoInventory(Main_Charicter.Inventory[i]);
+                }
+            }
 
             if (Secondary_Charicter == null && Secondary_Container == null) CreateNewContainer(Main_Charicter.Inventory);
 
@@ -145,10 +229,83 @@ namespace TWoM.UI.Inventroys
 
             InventoryUsed();
         }
+        public void GiveSinge(int amount)
+        {
+            if (Main_Charicter.Inventory[SelectedSlot].Quantity < amount) amount = Main_Charicter.Inventory[SelectedSlot].Quantity;
+
+            ItemSlot newItem = new ItemSlot(Main_Charicter.Inventory[SelectedSlot].VItem, amount);
+
+            if (Secondary_Charicter != null)
+            {
+                if (Secondary_Charicter.AddItemtoInventory(newItem))
+                {
+                    Main_Charicter.Inventory[SelectedSlot].Quantity -= amount;
+                    if (Main_Charicter.Inventory[SelectedSlot].Quantity <= 0)
+                    {
+                        Main_Charicter.Inventory.RemoveAt(SelectedSlot);
+                    }
+                }
+            }
+            if (Secondary_Container != null)
+            {
+                if (Secondary_Container.AddItemtoInventory(newItem))
+                {
+                    Main_Charicter.Inventory[SelectedSlot].Quantity -= amount;
+                    if (Main_Charicter.Inventory[SelectedSlot].Quantity <= 0)
+                    {
+                        Main_Charicter.Inventory.RemoveAt(SelectedSlot);
+                    }
+                }
+            }
+
+            List<ItemSlot> newlist = new List<ItemSlot>();
+
+            newlist.Add(newItem);
+            if (Secondary_Charicter == null && Secondary_Container == null)
+            {
+                CreateNewContainer(newlist);
+                Main_Charicter.Inventory[SelectedSlot].Quantity -= amount;
+                if (Main_Charicter.Inventory[SelectedSlot].Quantity <= 0)
+                {
+                    Main_Charicter.Inventory.RemoveAt(SelectedSlot);
+                }
+            }
+
+            BackInteractionArea();
+            InventoryUsed();
+        }
+        public void GiveSinge()
+        {
+            ItemSlot newItem = new ItemSlot(Main_Charicter.Inventory[SelectedSlot].VItem, Main_Charicter.Inventory[SelectedSlot].Quantity);
+            if (Secondary_Charicter != null)
+            {
+                if (Secondary_Charicter.AddItemtoInventory(newItem))
+                {
+                    Main_Charicter.Inventory.RemoveAt(SelectedSlot);
+                }
+            }
+            if (Secondary_Container != null)
+            {
+                if (Secondary_Container.AddItemtoInventory(newItem))
+                {
+                    Main_Charicter.Inventory.RemoveAt(SelectedSlot);
+                }
+            }
+            List<ItemSlot> newlist = new List<ItemSlot>();
+
+            newlist.Add(newItem);
+            if (Secondary_Charicter == null && Secondary_Container == null)
+            {
+                CreateNewContainer(newlist);
+                Main_Charicter.Inventory.RemoveAt(SelectedSlot);
+            }
+
+            BackInteractionArea();
+            InventoryUsed();
+        }
 
         void CreateNewContainer(List<ItemSlot> _items)
         {
-            Debug.Log("New Container");
             P_Container newContainer = Instantiate(TempContainer, new Vector3(Main_Charicter.transform.position.x, Main_Charicter.transform.position.y,-1), Quaternion.identity).GetComponent<P_Container>();
             newContainer.Inventory = _items;
             Secondary_Container = newContainer;
@@ -156,17 +313,24 @@ namespace TWoM.UI.Inventroys
 
         public void SelectSlot(int _slot, UI_P_Inventory _from)
         {
-            Debug.Log("Select Slot");
-            SelectedSlot = _slot;
-            from_Inventory = _from;
+            if (_from.Inventory.Count > _slot)
+            {
+                SelectedSlot = _slot;
+                from_Inventory = _from;
+                InteractionArea.Item = _from.Inventory[_slot];
 
-            if (from_Inventory == Main_Inventory)
-            {
-                InteractionArea.SwitchArea(InteractAreaType.GIVE);
+                if (from_Inventory == Main_Inventory)
+                {
+                    InteractionArea.SwitchArea(InteractAreaType.GIVE);
+                }
+                if (from_Inventory == Secondary_Inventory)
+                {
+                    InteractionArea.SwitchArea(InteractAreaType.TAKE);
+                }
             }
-            if (from_Inventory == Secondary_Inventory)
+            else
             {
-                InteractionArea.SwitchArea(InteractAreaType.TAKE);
+                BackInteractionArea();
             }
         }
 

@@ -38,6 +38,10 @@ namespace TWoM.UI.Inventroys
         public GameObject EquipmentArea;
         public GameObject InventoryArea;
 
+        public GameObject TempArea;
+
+        public int Page = 0;
+
         void Awake()
         {
             Slots = new List<InventorySlot>();
@@ -93,8 +97,13 @@ namespace TWoM.UI.Inventroys
             for (int i = 0; i < Slots.Count; i++)
             {
                 if (Slots[i].Item != null)
+                {
+                    ItemPool.Add(Slots[i].Item);
+                    Slots[i].Item.transform.SetParent(TempArea.transform);
                     Slots[i].Item.SetActive(false);
-                Slots[i].Item = null;
+                    Slots[i].Item = null;
+                }
+                Slots[i].Slot.GetComponent<UI_P_InventorySlot>().HoldingItem = null;
 
                 if (Inventory.Count > i)
                 {
@@ -113,27 +122,13 @@ namespace TWoM.UI.Inventroys
                     }
                     ItemGO.SetActive(true);
                     ItemGO.transform.SetParent(Slots[i].Slot.transform);
-
-                    for (int j = 0; j < ItemGO.transform.childCount; j++)
-                    {
-                        ItemGO.transform.GetChild(j).GetComponent<Image>().sprite = null;
-                        ItemGO.transform.GetChild(j).GetComponent<Image>().color = Color.white;
-
-                        ItemGO.transform.GetChild(j).gameObject.SetActive(true);
-                        ItemGO.transform.GetChild(j).GetComponent<Image>().preserveAspect = true;
-                        if (Inventory[i].VItem.Sprites.Count > j)
-                        {
-                            ItemGO.transform.GetChild(j).GetComponent<Image>().sprite = Inventory[i].VItem.Sprites[j];
-                            ItemGO.transform.GetChild(j).GetComponent<Image>().color = Inventory[i].VItem.Colours[j];
-                        }
-                        else
-                        {
-                            ItemGO.transform.GetChild(j).gameObject.SetActive(false);
-                        }
-                    }
-
+                    
                     ItemGO.transform.localPosition = new Vector3(0, 0, -1);
                     ItemGO.transform.localScale = new Vector3(1, 1, 1);
+                    
+                    Slots[i].Slot.GetComponent<UI_P_InventorySlot>().HoldingItem = Inventory[i];
+
+                    Slots[i].Slot.GetComponent<UI_P_InventorySlot>().SetupItem();
 
                     Slots[i].Item = ItemGO;
                 }
@@ -148,7 +143,7 @@ namespace TWoM.UI.Inventroys
                 if (Slots[i].Slot == fromSlot)
                 {
                     Debug.Log("Found Slot");
-                    GetComponentInParent<UI_Controller_Inventory>().SelectSlot(i, GetComponent<UI_P_Inventory>());
+                    GetComponentInParent<UI_Controller_Inventory>().SelectSlot((Page * 20) + i, GetComponent<UI_P_Inventory>());
                 }
             }
         }
