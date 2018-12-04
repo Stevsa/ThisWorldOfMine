@@ -130,7 +130,8 @@ namespace TWoM.Items
             for (int i = 0; i < newColours.Length; i++)
             {
                 Color newCol;
-                ColorUtility.TryParseHtmlString(newColours[i], out newCol);
+                ColorUtility.TryParseHtmlString("#" + newColours[i], out newCol);
+                Debug.Log(newCol);
                 Colours.Add(newCol);
             }
 

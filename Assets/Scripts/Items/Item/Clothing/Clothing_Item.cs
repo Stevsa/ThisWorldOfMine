@@ -7,9 +7,25 @@ namespace TWoM.Items
     public enum ClothingType
     {
         HEAD,
-        BODY,
+        FACE,
+        EARS,
+        HORNS,
+        EYES,
+        NECK,
+        MUZZLE,
+        WINGS,
+        SHOLDER,
+        TORSO,
+        BACK,
+        NIPPLE,
+        WRIST,
+        HANDS,
+        FINGERS,
+        TAIL,
+        UNDERFEET,
+        FEET,
         LEGS,
-        FEET
+        CROTCH
     }
 
     [System.Serializable]

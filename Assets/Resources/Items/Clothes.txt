@@ -1,2 +1,2 @@
 //Clothing_Item,Consumable_Item,V_Book,Weapon_Item,Quest_Item,Unique_Item
-<Clothing_Item><Name ='T-Shirt'><Type ='BODY'><Stackable ='FALSE'><Sprite ='NULL', Colour ='ffffff'><Value ='8'><Enchantable ='TRUE'><Info =''><Extra =''>
+<Clothing_Item><Name ='Red T-Shirt'><Type ='TORSO'><Stackable ='FALSE'><Sprite ='Sprites/T-Shirt,T-Shirt_1|Sprites/T-Shirt,T-Shirt_0', Colour ='BB0500|ffffff'><Value ='8'><Enchantable ='TRUE'><Info =''><Extra =''>

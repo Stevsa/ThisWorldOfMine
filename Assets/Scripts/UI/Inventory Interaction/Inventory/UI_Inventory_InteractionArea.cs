@@ -62,7 +62,9 @@ namespace TWoM.UI.Inventroys
 
             ItemGO.transform.parent.Find("Item Name").GetComponent<Text>().text = Item.VItem.name;
 
-            ItemGO.transform.parent.Find("Quantity").GetComponent<Text>().text = "Quantity: " + Item.Quantity.ToString();
+            ItemGO.transform.parent.Find("Quantity").GetComponent<Text>().text = "";
+            if (Item.VItem.Stackable)
+                ItemGO.transform.parent.Find("Quantity").GetComponent<Text>().text = "Quantity: " + Item.Quantity.ToString();
 
             if (ItemGO!=null)
             {
@@ -73,16 +75,13 @@ namespace TWoM.UI.Inventroys
                         ItemGO.transform.GetChild(j).GetComponent<Image>().sprite = null;
                         ItemGO.transform.GetChild(j).GetComponent<Image>().color = Color.white;
 
-                        ItemGO.transform.GetChild(j).gameObject.SetActive(true);
+                        ItemGO.transform.GetChild(j).gameObject.SetActive(false);
                         ItemGO.transform.GetChild(j).GetComponent<Image>().preserveAspect = true;
                         if (Item.VItem.Sprites.Count > j)
                         {
+                            ItemGO.transform.GetChild(j).gameObject.SetActive(true);
                             ItemGO.transform.GetChild(j).GetComponent<Image>().sprite = Item.VItem.Sprites[j];
                             ItemGO.transform.GetChild(j).GetComponent<Image>().color = Item.VItem.Colours[j];
-                        }
-                        else
-                        {
-                            ItemGO.transform.GetChild(j).gameObject.SetActive(false);
                         }
                     }
                 }

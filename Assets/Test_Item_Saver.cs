@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using System.Text;
 using TWoM.Items;
+using TWoM.Characters;
 
 public class Test_Item_Saver : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class Test_Item_Saver : MonoBehaviour
             }
         }
 
-
+        FindObjectOfType<Player_Character>().AddItemtoInventory(new ItemSlot(TestItems[1], 5));
+        FindObjectOfType<Player_Character>().AddItemtoInventory(new ItemSlot(TestItems[0], 1));
     }
 
     V_P_Item CreateItemFromString(string str)

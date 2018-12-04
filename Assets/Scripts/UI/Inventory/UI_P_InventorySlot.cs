@@ -45,8 +45,12 @@ namespace TWoM.UI.Inventroys
 
                 if (Child.GetChild(j).GetComponent<Text>() != null)
                 {
-                    Child.GetChild(j).gameObject.SetActive(true);
-                    Child.GetChild(j).GetComponent<Text>().text = HoldingItem.Quantity.ToString();
+                    Child.GetChild(j).gameObject.SetActive(false);
+                    if (HoldingItem.VItem.Stackable)
+                    {
+                        Child.GetChild(j).gameObject.SetActive(true);
+                        Child.GetChild(j).GetComponent<Text>().text = HoldingItem.Quantity.ToString();
+                    }
                 }
             }
         }

@@ -50,7 +50,9 @@ namespace TWoM.UI.Hover
                 }
             }
 
-            QuantityGO.GetComponentInChildren<Text>().text = "Quantity: " + Item.Quantity.ToString();
+            QuantityGO.GetComponentInChildren<Text>().text = "";
+            if (Item.VItem.Stackable)
+                QuantityGO.GetComponentInChildren<Text>().text = "Quantity: " + Item.Quantity.ToString();
 
         }
     }
