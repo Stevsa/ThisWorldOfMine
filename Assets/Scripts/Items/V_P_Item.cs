@@ -7,8 +7,22 @@ namespace TWoM.Items
 {
     public interface IUseable<in t>
     {
-        void Use(t User);
+        int Amount { get; set; }
+        bool Use(t User);
     }
+
+    public interface IEquipable<in t>
+    {
+        ClothingType ItemLocation { get; set; }
+        bool Equip(t User);
+    }
+
+    public interface IConsumable<in t>
+    {
+        string Verb { get; set; }
+        bool Consume(t User);
+    }
+
 
     [System.Serializable]
     public class ItemSlot
@@ -131,7 +145,6 @@ namespace TWoM.Items
             {
                 Color newCol;
                 ColorUtility.TryParseHtmlString("#" + newColours[i], out newCol);
-                Debug.Log(newCol);
                 Colours.Add(newCol);
             }
 

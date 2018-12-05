@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TWoM.Characters;
 
 namespace TWoM.Items
 {
@@ -17,7 +18,7 @@ namespace TWoM.Items
         SHOLDER,
         TORSO,
         BACK,
-        NIPPLE,
+        BELT,
         WRIST,
         HANDS,
         FINGERS,
@@ -29,9 +30,23 @@ namespace TWoM.Items
     }
 
     [System.Serializable]
-    public class Clothing_Item : V_Item
+    public class Clothing_Item : V_Item, IEquipable<P_Character>
     {
-        public ClothingType ItemLocation;
+        public ClothingType ItemLocation { get; set; }
+
+        public bool Equip(P_Character User)
+        {
+            V_P_Item returnItem;
+
+            if (User.EquipItem(this,out returnItem))
+            {
+                if (returnItem != null)
+                    User.AddItemtoInventory(new ItemSlot(returnItem, 1));
+                return true;
+            }
+
+            return false;
+        }
 
         public override void LoadItem(string sItem)
         {
@@ -40,7 +55,6 @@ namespace TWoM.Items
             string SearchString = "Type ='";
 
             ItemLocation = (ClothingType)System.Enum.Parse(typeof(ClothingType), LoadStringParts(SearchString,sItem));
-            Debug.Log(ItemLocation);
 
             base.LoadItem(sItem);
         }

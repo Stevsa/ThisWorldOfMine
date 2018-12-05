@@ -5,7 +5,14 @@ using TWoM.Items;
 
 namespace TWoM.Characters
 {
-    public class P_Character : MonoBehaviour
+    public interface IInventoryHolder<in t>
+    {
+        List<ItemSlot> Inventory { get; set; }
+        int maxInventorySpaces { get; set; }
+        bool AddItemtoInventory(t _item);
+    }
+
+    public class P_Character : MonoBehaviour, IInventoryHolder<ItemSlot>
     {
         public string FirstName;
         public List<string> MiddleNames;
@@ -20,8 +27,10 @@ namespace TWoM.Characters
         public PersonalityHolder charPersonality;
         public TraitsHolder charTraits;
 
-        public List<ItemSlot> Inventory;
-        public int maxInventorySpaces;
+        public List<ItemSlot> Inventory { get; set; }
+        public int maxInventorySpaces { get; set; }
+
+        public List<V_P_Item> Equipment;
 
         public SpriteHolder charSprites;
 
@@ -91,41 +100,51 @@ namespace TWoM.Characters
             UniquePortrait = charVirtural.UniquePortrait;
         }
 
-        public virtual ItemSlot[] PickupFromInventroy(ItemSlot[] Inventory)
+        public bool AddItemtoInventory(ItemSlot _item)
         {
-            Debug.Log("Picking Up Inventroy");
-            List<ItemSlot> newInventory = new List<ItemSlot>();
-            for (int i = 0; i < Inventory.Length; i++)
-            {
-                if (Inventory[i] != null)
-                    if (Inventory[i].VItem != null)
-                        if (!AddItemtoInventory(Inventory[i]))
-                        {
-                            newInventory.Add(Inventory[i]);
-                        }
-            }
+            if (maxInventorySpaces == 0) maxInventorySpaces = 10;
+            if (Inventory == null) Inventory = new List<ItemSlot>();
 
-            return newInventory.ToArray();
-        }
-
-        public virtual bool AddItemtoInventory(ItemSlot ItemSlot)
-        {
             for (int i = 0; i < Inventory.Count; i++)
             {
                 if (Inventory[i].VItem != null)
-                    if (Inventory[i].VItem.name == ItemSlot.VItem.name)
+                    if (Inventory[i].VItem.name == _item.VItem.name)
                         if (Inventory[i].VItem.Stackable)
                         {
-                            Inventory[i].Quantity += ItemSlot.Quantity;
+                            Inventory[i].Quantity += _item.Quantity;
                             return true;
                         }
             }
 
             if (Inventory.Count < maxInventorySpaces)
             {
-                Inventory.Add(new ItemSlot(ItemSlot.VItem, ItemSlot.Quantity));
+                Inventory.Add(new ItemSlot(_item.VItem, _item.Quantity));
                 return true;
             }
+            return false;
+        }
+
+        public bool EquipItem(V_P_Item _item, out V_P_Item _outItem)
+        {
+            _outItem = null;
+            for (int i = 0; i < Equipment.Count; i++)
+            {
+                if ((Equipment[i] as IEquipable<P_Character>).ItemLocation == (_item as IEquipable<P_Character>).ItemLocation)
+                {
+                    _outItem = Equipment[i];
+                    Equipment.RemoveAt(i);
+                    Equipment.Add(_item);
+                    return true;
+                }
+            }
+
+            if (_outItem == null)
+            {
+                Equipment.Add(_item);
+                return true;
+            }
+
+            _outItem = null;
             return false;
         }
     }

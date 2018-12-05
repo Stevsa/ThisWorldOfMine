@@ -22,8 +22,6 @@ namespace TWoM.UI.Hover
 
         public void ItemSetup()
         {
-            Debug.Log("Setup");
-
             Transform NameGO = transform.GetChild(0);
             Transform ImageGO = transform.GetChild(1);
             Transform QuantityGO = transform.GetChild(2);
