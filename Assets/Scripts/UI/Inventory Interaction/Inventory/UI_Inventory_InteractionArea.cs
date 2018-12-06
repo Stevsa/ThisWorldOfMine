@@ -57,6 +57,7 @@ namespace TWoM.UI.Inventroys
                 default:
                     break;
             }
+
         }
 
         public void ResetItem()
@@ -124,56 +125,57 @@ namespace TWoM.UI.Inventroys
             }
 
             if (ItemGO != null)
-            {
-                if (Main)
+                if (!Equiped)
                 {
+                    if (Main)
                     {
-                        GameObject newButton = avalibleButtons[0];
-                        avalibleButtons.RemoveAt(0);
-                        newButton.SetActive(true);
-                        newButton.GetComponentInChildren<Text>().text = "Give One";
-                        newButton.GetComponent<Button>().onClick.AddListener(delegate { GiveSingle(1); });
+                        {
+                            GameObject newButton = avalibleButtons[0];
+                            avalibleButtons.RemoveAt(0);
+                            newButton.SetActive(true);
+                            newButton.GetComponentInChildren<Text>().text = "Give One";
+                            newButton.GetComponent<Button>().onClick.AddListener(delegate { GiveSingle(1); });
+                        }
+                        {
+                            GameObject newButton = avalibleButtons[0];
+                            avalibleButtons.RemoveAt(0);
+                            newButton.SetActive(true);
+                            newButton.GetComponentInChildren<Text>().text = "Give Five";
+                            newButton.GetComponent<Button>().onClick.AddListener(delegate { GiveSingle(5); });
+                        }
+                        {
+                            GameObject newButton = avalibleButtons[0];
+                            avalibleButtons.RemoveAt(0);
+                            newButton.SetActive(true);
+                            newButton.GetComponentInChildren<Text>().text = "Give All";
+                            newButton.GetComponent<Button>().onClick.AddListener(delegate { GiveSingle(0); });
+                        }
                     }
+                    else
                     {
-                        GameObject newButton = avalibleButtons[0];
-                        avalibleButtons.RemoveAt(0);
-                        newButton.SetActive(true);
-                        newButton.GetComponentInChildren<Text>().text = "Give Five";
-                        newButton.GetComponent<Button>().onClick.AddListener(delegate { GiveSingle(5); });
-                    }
-                    {
-                        GameObject newButton = avalibleButtons[0];
-                        avalibleButtons.RemoveAt(0);
-                        newButton.SetActive(true);
-                        newButton.GetComponentInChildren<Text>().text = "Give All";
-                        newButton.GetComponent<Button>().onClick.AddListener(delegate { GiveSingle(0); });
+                        {
+                            GameObject newButton = avalibleButtons[0];
+                            avalibleButtons.RemoveAt(0);
+                            newButton.SetActive(true);
+                            newButton.GetComponentInChildren<Text>().text = "Take One";
+                            newButton.GetComponent<Button>().onClick.AddListener(delegate { TakeSingle(1); });
+                        }
+                        {
+                            GameObject newButton = avalibleButtons[0];
+                            avalibleButtons.RemoveAt(0);
+                            newButton.SetActive(true);
+                            newButton.GetComponentInChildren<Text>().text = "Take Five";
+                            newButton.GetComponent<Button>().onClick.AddListener(delegate { TakeSingle(5); });
+                        }
+                        {
+                            GameObject newButton = avalibleButtons[0];
+                            avalibleButtons.RemoveAt(0);
+                            newButton.SetActive(true);
+                            newButton.GetComponentInChildren<Text>().text = "Take All";
+                            newButton.GetComponent<Button>().onClick.AddListener(delegate { TakeSingle(0); });
+                        }
                     }
                 }
-                else
-                {
-                    {
-                        GameObject newButton = avalibleButtons[0];
-                        avalibleButtons.RemoveAt(0);
-                        newButton.SetActive(true);
-                        newButton.GetComponentInChildren<Text>().text = "Take One";
-                        newButton.GetComponent<Button>().onClick.AddListener(delegate { TakeSingle(1); });
-                    }
-                    {
-                        GameObject newButton = avalibleButtons[0];
-                        avalibleButtons.RemoveAt(0);
-                        newButton.SetActive(true);
-                        newButton.GetComponentInChildren<Text>().text = "Take Five";
-                        newButton.GetComponent<Button>().onClick.AddListener(delegate { TakeSingle(5); });
-                    }
-                    {
-                        GameObject newButton = avalibleButtons[0];
-                        avalibleButtons.RemoveAt(0);
-                        newButton.SetActive(true);
-                        newButton.GetComponentInChildren<Text>().text = "Take All";
-                        newButton.GetComponent<Button>().onClick.AddListener(delegate { TakeSingle(0); });
-                    }
-                }
-            }
 
             if (ItemGO != null)
                 if (Item.VItem is IEquipable<P_Character>)
@@ -214,6 +216,9 @@ namespace TWoM.UI.Inventroys
             List<GameObject> avalibleButtons = new List<GameObject>();
             avalibleButtons.AddRange(AllInterationsButtons);
 
+            Equiped = false;
+            Item = null;
+
             Debug.Log("All Swtup");
             {
                 GameObject newButton = avalibleButtons[0];
@@ -247,8 +252,7 @@ namespace TWoM.UI.Inventroys
                 GetComponentInParent<UI_Controller_Inventory>().Main_Inventory.RebuildInventroy();
                 GetComponentInParent<UI_Controller_Inventory>().Main_Inventory.ChangeToEquipment();
                 GetComponentInParent<UI_Controller_Inventory>().Main_Inventory.RebuildEquipment();
-                Equiped = true;
-                ResetItem();
+                GetComponentInParent<UI_Controller_Inventory>().Unselect();
             }
         }
 
@@ -261,8 +265,7 @@ namespace TWoM.UI.Inventroys
                 GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.RebuildInventroy();
                 GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.ChangeToEquipment();
                 GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.RebuildEquipment();
-                Equiped = true;
-                ResetItem();
+                GetComponentInParent<UI_Controller_Inventory>().Unselect();
             }
         }
 
@@ -309,6 +312,7 @@ namespace TWoM.UI.Inventroys
                 GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.ChangeToInventory();
                 GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.RebuildInventroy();
             }
+            GetComponentInParent<UI_Controller_Inventory>().Unselect();
         }
 
         public void TakeAll()
@@ -335,6 +339,8 @@ namespace TWoM.UI.Inventroys
                 _from.Inventory = newInventorySlot;
             }
             GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.RebuildInventroy();
+            GetComponentInParent<UI_Controller_Inventory>().InventoryUsed();
+            GetComponentInParent<UI_Controller_Inventory>().Unselect();
         }
         public void TakeSingle(int amount)
         {
@@ -358,13 +364,16 @@ namespace TWoM.UI.Inventroys
             if (_to.AddItemtoInventory(new ItemSlot(Item.VItem, amount)))
             {
                 int index = _from.Inventory.FindIndex(newItem => newItem == Item);
-                _from.Inventory[index].Quantity = amount;
+                _from.Inventory[index].Quantity -= amount;
                 if (_from.Inventory[index].Quantity < 1)
                 {
                     _from.Inventory.RemoveAt(index);
                 }
             }
+
             GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.RebuildInventroy();
+            GetComponentInParent<UI_Controller_Inventory>().InventoryUsed();
+            GetComponentInParent<UI_Controller_Inventory>().Unselect();
         }
 
 
@@ -396,6 +405,8 @@ namespace TWoM.UI.Inventroys
             Debug.Log(_from.Inventory.Count);
             _from.Inventory = newInventorySlot;
             GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.RebuildInventroy();
+            GetComponentInParent<UI_Controller_Inventory>().InventoryUsed();
+            GetComponentInParent<UI_Controller_Inventory>().Unselect();
         }
         public void GiveSingle(int amount)
         {
@@ -419,20 +430,21 @@ namespace TWoM.UI.Inventroys
             }
             if (_to == null)
             {
-                List<ItemSlot> newList = new List<ItemSlot>();
-                newList.Add(new ItemSlot(Item.VItem, amount));
-                GetComponentInParent<UI_Controller_Inventory>().CreateNewContainer(newList);
+                GetComponentInParent<UI_Controller_Inventory>().CreateNewContainer(new List<ItemSlot>());
+                _to = GetComponentInParent<UI_Controller_Inventory>().Secondary_Container;
             }
-            else if (_to.AddItemtoInventory(new ItemSlot(Item.VItem, amount)))
+            if (_to.AddItemtoInventory(new ItemSlot(Item.VItem, amount)))
             {
                 int index = _from.Inventory.FindIndex(newItem => newItem == Item);
-                _from.Inventory[index].Quantity = amount;
+                _from.Inventory[index].Quantity -= amount;
                 if (_from.Inventory[index].Quantity < 1)
                 {
                     _from.Inventory.RemoveAt(index);
                 }
             }
             GetComponentInParent<UI_Controller_Inventory>().Secondary_Inventory.RebuildInventroy();
+            GetComponentInParent<UI_Controller_Inventory>().InventoryUsed();
+            GetComponentInParent<UI_Controller_Inventory>().Unselect();
         }
     }
 }

@@ -94,19 +94,12 @@ namespace TWoM.UI.Inventroys
 
         public void CloseInventorys()
         {
-            Main_Charicter.Inventory = Main_Inventory.Inventory;
-
-            if (Secondary_Charicter != null) Secondary_Charicter.Inventory = Secondary_Inventory.Inventory;
-            if (Secondary_Container != null) Secondary_Container.Inventory = Secondary_Inventory.Inventory;
-            
-
-            //if (Secondary_Charicter != null) Secondary_Charicter.Inventory = Secondary_Inventory.Inventory;
             if (Secondary_Container != null) Secondary_Container.Close();
             
             FindObjectOfType<UI_Middle_Interaction_Area>().Close();
         }
 
-        void InventoryUsed()
+        public void InventoryUsed()
         {
             Main_Inventory.UpdateFrom(Main_Charicter);
             
