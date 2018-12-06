@@ -46,6 +46,46 @@ namespace TWoM.Characters
 
         }
 
+        public virtual void Spawn(P_Species _Species)
+        {
+            if (charLooks == null)
+            {
+                charLooks = new LooksHolder(_Species);
+            }
+        }
+
+        public virtual void Spawn(P_Species _Species, P_Species _SecondaySpecies)
+        {
+            if (charLooks == null)
+            {
+                charLooks = new LooksHolder(_Species);
+            }
+            for (int i = 0; i < System.Enum.GetNames(typeof(BodyParts)).Length; i++)
+            {
+                float ran = Random.value;
+                if (ran < 0.5f)
+                {
+                    charLooks.ChangePart(new ALook(_SecondaySpecies, (BodyParts)i));
+                }
+                if (ran < 0.05f)
+                {
+                    if (_Species.possibleMultiParts.Contains((BodyParts)i))
+                    {
+                        MultiLook multi = new MultiLook
+                        {
+                            Otherspecies = new List<P_Species>(),
+                            species = _Species,
+                            BodyPart = (BodyParts)i
+                        };
+
+                        multi.Otherspecies.Add(_SecondaySpecies);
+
+                        charLooks.ChangePart(multi);
+                    }
+                }
+            }
+        }
+
         protected virtual void Update()
         {
             Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
