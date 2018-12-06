@@ -8,9 +8,12 @@ using TWoM.UI;
 
 namespace TWoM.Inworld
 {
-    public class P_Container : MonoBehaviour, IUseable<GameObject>
+    public class P_Container : MonoBehaviour, IUseable<GameObject>, IInventoryHolder<ItemSlot>
     {
-        public List<ItemSlot> Inventory;
+        public List<ItemSlot> Inventory { get; set; }
+        public int maxInventorySpaces { get; set; }
+
+        public int Amount { get; set; }
 
         void Start()
         {
@@ -40,18 +43,21 @@ namespace TWoM.Inworld
             }
         }
 
-        public void Use(GameObject User)
+        public bool Use(GameObject User)
         {
             if (User != null)
                 if (User.GetComponent<P_Character>() != null)
                 {
                     FindObjectOfType<UI_Middle_Interaction_Area>().OpenMenu(Middle_Menues.INVENTORY);
                     FindObjectOfType<UI_Controller_Inventory>().OpenInventoryFrom(User.GetComponent<P_Character>(), GetComponent<P_Container>());
+                    return true;
                 }
+            return false;
         }
 
         public void Close()
         {
+            Debug.Log(Inventory.Count);
             if (Inventory.Count <= 0)
             {
                 Destroy(gameObject);
@@ -59,20 +65,20 @@ namespace TWoM.Inworld
         }
 
         
-        public virtual bool AddItemtoInventory(ItemSlot ItemSlot)
+        public virtual bool AddItemtoInventory(ItemSlot _item)
         {
             for (int i = 0; i < Inventory.Count; i++)
             {
                 if (Inventory[i].VItem != null)
-                    if (Inventory[i].VItem.name == ItemSlot.VItem.name)
+                    if (Inventory[i].VItem.name == _item.VItem.name)
                         if (Inventory[i].VItem.Stackable)
                         {
-                            Inventory[i].Quantity += ItemSlot.Quantity;
+                            Inventory[i].Quantity += _item.Quantity;
                             return true;
                         }
             }
 
-            Inventory.Add(new ItemSlot(ItemSlot.VItem, ItemSlot.Quantity));
+            Inventory.Add(new ItemSlot(_item.VItem, _item.Quantity));
             return true;
         }
     }

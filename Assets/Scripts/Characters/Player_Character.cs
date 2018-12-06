@@ -11,7 +11,6 @@ namespace TWoM.Characters
 {
     public class Player_Character : P_Character
     {
-
         protected override void Start()
         {
 

@@ -13,7 +13,7 @@ public class Test_Item_Saver : MonoBehaviour
     [TextArea]
     public string theText;
 
-	void Start ()
+	void Start()
     {
         TextAsset[] AllText = Resources.LoadAll<TextAsset>("Items");
 
