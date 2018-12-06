@@ -24,7 +24,35 @@ namespace TWoM.UI.Inventroys
 
         void Start()
         {
+            Setup();
+        }
 
+        public void Setup()
+        {
+            {
+                MainButtons = new List<GameObject>();
+                Button[] AllButtons = Main_InteractionArea.transform.GetChild(1).GetComponentsInChildren<Button>();
+                for (int i = 0; i < AllButtons.Length; i++)
+                {
+                    MainButtons.Add(AllButtons[i].gameObject);
+                }
+            }
+            {
+                SecondaryButtons = new List<GameObject>();
+                Button[] AllButtons = Secondary_InteractionArea.transform.GetChild(1).GetComponentsInChildren<Button>();
+                for (int i = 0; i < AllButtons.Length; i++)
+                {
+                    SecondaryButtons.Add(AllButtons[i].gameObject);
+                }
+            }
+            {
+                AllInterationsButtons = new List<GameObject>();
+                Button[] AllButtons = All_InteractionArea.transform.GetComponentsInChildren<Button>();
+                for (int i = 0; i < AllButtons.Length; i++)
+                {
+                    AllInterationsButtons.Add(AllButtons[i].gameObject);
+                }
+            }
         }
 
         void Update()
@@ -57,11 +85,11 @@ namespace TWoM.UI.Inventroys
                 default:
                     break;
             }
-
         }
 
         public void ResetItem()
         {
+            Setup();
             GameObject ItemGO = null;
             GameObject MainGO = null;
             List<GameObject> avalibleButtons = new List<GameObject>();
@@ -102,7 +130,6 @@ namespace TWoM.UI.Inventroys
 
             if (ItemGO != null)
             {
-                Debug.Log("Change Sprite");
                 for (int j = 0; j < ItemGO.transform.childCount; j++)
                 {
                     if (ItemGO.transform.GetChild(j).GetComponent<Image>() != null)
@@ -213,13 +240,13 @@ namespace TWoM.UI.Inventroys
 
         public void ResetAll()
         {
+            Setup();
             List<GameObject> avalibleButtons = new List<GameObject>();
             avalibleButtons.AddRange(AllInterationsButtons);
 
             Equiped = false;
             Item = null;
-
-            Debug.Log("All Swtup");
+            
             {
                 GameObject newButton = avalibleButtons[0];
                 avalibleButtons.RemoveAt(0);

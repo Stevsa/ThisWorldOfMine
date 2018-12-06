@@ -15614,8 +15614,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 95, y: 0}
-  m_SizeDelta: {x: 180, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &985406266
 MonoBehaviour:
@@ -18594,8 +18594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 95, y: 0}
-  m_SizeDelta: {x: 190, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1208311112
 MonoBehaviour:
@@ -25895,30 +25895,9 @@ MonoBehaviour:
     Quantity: 0
   Equiped: 0
   Main: 0
-  MainButtons:
-  - {fileID: 1564702791}
-  - {fileID: 299907412}
-  - {fileID: 675507263}
-  - {fileID: 1601005073}
-  - {fileID: 1059841485}
-  - {fileID: 1289001686}
-  - {fileID: 827144201}
-  - {fileID: 1177916364}
-  - {fileID: 2104326382}
-  SecondaryButtons:
-  - {fileID: 151796072}
-  - {fileID: 355533544}
-  - {fileID: 1160424513}
-  - {fileID: 981075255}
-  - {fileID: 1770199548}
-  - {fileID: 1877502824}
-  - {fileID: 1509339415}
-  - {fileID: 845049760}
-  - {fileID: 1570117668}
-  AllInterationsButtons:
-  - {fileID: 1545104636}
-  - {fileID: 38028661}
-  - {fileID: 874632285}
+  MainButtons: []
+  SecondaryButtons: []
+  AllInterationsButtons: []
 --- !u!1 &1736311899
 GameObject:
   m_ObjectHideFlags: 0
@@ -29893,8 +29872,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 90, y: 0}
-  m_SizeDelta: {x: 180, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2050473424
 MonoBehaviour:

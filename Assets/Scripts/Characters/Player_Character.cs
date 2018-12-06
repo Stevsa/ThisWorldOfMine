@@ -20,6 +20,7 @@ namespace TWoM.Characters
         {
             if (ObjectsInReach.Count > 0)
             {
+                Debug.Log("Object In reach");
                 FindObjectOfType<UI_InteractionArea>().TopInteration = ObjectsInReach[0];
                 if (Input.GetAxis("Use") > 0)
                 {

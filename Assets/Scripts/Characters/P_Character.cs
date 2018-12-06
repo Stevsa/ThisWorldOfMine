@@ -73,8 +73,6 @@ namespace TWoM.Characters
                     GetComponent<SpriteRenderer>().sprite = charSprites.DownSprite;
                 }
             }
-
-
         }
 
         protected virtual void FixedUpdate()

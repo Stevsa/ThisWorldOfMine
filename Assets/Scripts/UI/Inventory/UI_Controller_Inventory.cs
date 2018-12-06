@@ -42,15 +42,13 @@ namespace TWoM.UI.Inventroys
 
         public void OpenInventoryFrom(P_Character _Character)
         {
-
             if (!FindObjectOfType<UI_Controller>().InMenu)
             {
-
                 FindObjectOfType<UI_Controller>().InMenu = true;
                 Main_Charicter = _Character;
                 Secondary_Charicter = null;
                 Secondary_Container = null;
-
+                
                 Main_Inventory.UpdateFrom(_Character);
                 Secondary_Inventory.UpdateEmpty();
                 FindObjectOfType<UI_Middle_Interaction_Area>().OpenFrom(gameObject);
